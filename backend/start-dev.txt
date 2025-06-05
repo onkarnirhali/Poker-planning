@@ -1,0 +1,8 @@
+cd ~/poker-planning
+docker compose up -d
+
+cd ~/poker-planning/backend
+npm run dev
+
+cd ~/poker-planning/frontend
+npm run dev
