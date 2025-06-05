@@ -6,6 +6,9 @@ import cors from "cors";
 import { Server as SocketIOServer } from "socket.io";
 import dotenv from "dotenv";
 import { AppDataSource } from "./AppDataSource";
+import authRoutes from "./routes/auth";
+import sessionRoutes from "./routes/session";
+
 
 dotenv.config();
 
@@ -23,6 +26,8 @@ async function main() {
   const app = express();
   app.use(cors());
   app.use(express.json());
+  app.use("/api/v1/auth", authRoutes);
+  app.use("/api/v1/sessions", sessionRoutes);
 
   // 3. Health-check endpoint
   app.get("/api/v1/health", (_req, res) =>
@@ -45,6 +50,12 @@ async function main() {
     socket.on("disconnect", () => {
       console.log("❌ WebSocket disconnected:", socket.id);
     });
+  });
+
+  // Global error‐handling middleware
+  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(err);
+    res.status(400).json({ message: err.message });
   });
 
   server.listen(port, () => {

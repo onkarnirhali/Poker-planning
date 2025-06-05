@@ -22,7 +22,7 @@ export class AuthService {
 
     const user = this.userRepository.create({
       email,
-      password: hashedPassword,
+      passwordHash: hashedPassword,
       name,
     });
 
@@ -43,7 +43,7 @@ export class AuthService {
       throw new Error("Invalid email or password");
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
     if (!isPasswordValid) {
       throw new Error("Invalid email or password");
     }
