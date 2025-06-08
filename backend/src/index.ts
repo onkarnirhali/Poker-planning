@@ -6,8 +6,10 @@ import cors from "cors";
 import { Server as SocketIOServer } from "socket.io";
 import dotenv from "dotenv";
 import { AppDataSource } from "./AppDataSource";
+//Routers Impports
 import authRoutes from "./routes/auth";
 import sessionRoutes from "./routes/session";
+import storyRoutes from "./routes/story";
 
 
 dotenv.config();
@@ -28,6 +30,7 @@ async function main() {
   app.use(express.json());
   app.use("/api/v1/auth", authRoutes);
   app.use("/api/v1/sessions", sessionRoutes);
+  app.use("/api/v1/sessions/:sessionId/stories", storyRoutes);
 
   // 3. Health-check endpoint
   app.get("/api/v1/health", (_req, res) =>
