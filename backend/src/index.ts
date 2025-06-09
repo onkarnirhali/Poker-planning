@@ -6,6 +6,7 @@ import cors from "cors";
 import { Server as SocketIOServer } from "socket.io";
 import dotenv from "dotenv";
 import { AppDataSource } from "./AppDataSource";
+import { registerVotingHandlers } from "./sockets/voting";
 //Routers Impports
 import authRoutes from "./routes/auth";
 import sessionRoutes from "./routes/session";
@@ -46,14 +47,7 @@ async function main() {
       methods: ["GET", "POST"],
     },
   });
-
-  io.on("connection", (socket) => {
-    console.log("🔌 WebSocket connected:", socket.id);
-
-    socket.on("disconnect", () => {
-      console.log("❌ WebSocket disconnected:", socket.id);
-    });
-  });
+  registerVotingHandlers(io);
 
   // Global error‐handling middleware
   app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
