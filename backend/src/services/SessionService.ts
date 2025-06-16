@@ -12,15 +12,6 @@ export class SessionService {
     this.sessionRepository = dataSource.getRepository(Session);
   }
 
-  /**
-   * Create a new planning session.
-   * @param facilitatorId - ID of the user creating (and facilitating) the session.
-   * @param name - Name of the session (e.g., "Sprint 21 Estimation").
-   * @param password - Optional password to lock the room.
-   * @param timerDuration - Timer (seconds) for each story (default 60).
-   * @param maxParticipants - Maximum participants allowed (default 10).
-   * @returns The newly created session object and a 6‐character join code.
-   */
   async createSession(
     facilitatorId: string,
     name: string,
@@ -54,11 +45,14 @@ export class SessionService {
     return { session, joinCode };
   }
 
-  /**
-   * Fetch a session by its ID.
-   * @param sessionId - UUID of the session.
-   * @throws Error if not found.
-   */
+  async getAllSessions() {
+    // Fetch all sessions, ordered by creation date
+    let data = await this.sessionRepository.find({
+    order: { createdAt: "DESC" },
+    });
+    console.log("Fetched all sessions:", data);
+    return data;
+ }
   async getSession(sessionId: string) {
     const session = await this.sessionRepository.findOne({ where: { id: sessionId } });
     if (!session) {
@@ -67,13 +61,7 @@ export class SessionService {
     return session;
   }
 
-  /**
-   * Update a session’s fields (only the facilitator may do this).
-   * @param sessionId - UUID of the session to update.
-   * @param updates - Partial<Session> object with the fields to change.
-   * @param facilitatorId - ID of the logged‐in user attempting the update.
-   * @throws Error if session not found or facilitatorId mismatches.
-   */
+
   async updateSession(
     sessionId: string,
     updates: Partial<Session>,
@@ -107,12 +95,7 @@ export class SessionService {
     return await this.sessionRepository.save(session);
   }
 
-  /**
-   * Delete a session (only the facilitator may do this).
-   * @param sessionId - UUID of the session to delete.
-   * @param facilitatorId - ID of the logged‐in user attempting the deletion.
-   * @throws Error if session not found or facilitatorId mismatches.
-   */
+
   async deleteSession(sessionId: string, facilitatorId: string) {
     // 1) Load the session
     const session = await this.getSession(sessionId);

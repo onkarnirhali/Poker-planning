@@ -28,6 +28,17 @@ export class SessionController {
     }
   }
 
+  // GET /api/v1/sessions
+  static async list(req: Request, res: Response, next: NextFunction) {
+    console.log("Fetching all sessions");
+    try {
+      const sessions = await sessionService.getAllSessions();
+      return res.status(200).json(sessions);
+    } catch (err) {
+      next(err);
+    }
+  }
+
   // GET /api/v1/sessions/:sessionId
   static async getOne(req: Request, res: Response, next: NextFunction) {
     try {

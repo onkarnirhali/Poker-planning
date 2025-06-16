@@ -1,19 +1,28 @@
 // src/app/store.ts
-
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { sessionsApi } from '../api/sessionApi';
+import { authApi } from '../features/auth/authApi';
 import authReducer from '../features/auth/authSlice';
-// Later you’ll import sessionReducer, storyReducer, etc.
+// Import your RTK Query API slices as you create them
+// e.g. import { sessionsApi } from '../features/sessions/sessionsApi';
 
 export const store = configureStore({
   reducer: {
-    // Each key here corresponds to a slice of your global state
     auth: authReducer,
-    // session: sessionReducer,
-    // stories: storyReducer,
-    // votes: voteReducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [sessionsApi.reducerPath]: sessionsApi.reducer,
+    // Add reducers here:
+    // [sessionsApi.reducerPath]: sessionsApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+    .concat(authApi.middleware) // Add authApi middleware
+    .concat(sessionsApi.middleware)
+  ,
 });
 
-// These types help throughout your app for `useSelector` and `useDispatch`
+setupListeners(store.dispatch);
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

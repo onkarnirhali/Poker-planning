@@ -1,0 +1,15 @@
+src/
+├── api/            # RTK Query endpoints
+├── app/            # Redux store setup (store.ts)
+├── components/     # Shared UI components (wrappers around MUI)
+├── features/       # Feature folders (sessions/, stories/, voting/, chat/, analytics/)
+│   ├── sessions/
+│   │   ├── SessionsPage.tsx
+│   │   ├── sessionsSlice.ts
+│   │   └── sessionsApi.ts
+│   └── …            # stories/, voting/, etc.
+├── hooks/          # Custom hooks (e.g. useSocket)
+├── routes/         # React Router route definitions
+├── theme/          # MUI theme (theme.ts)
+├── utils/          # Helpers (date formatting, types/)
+└── main.tsx        # App entrypoint

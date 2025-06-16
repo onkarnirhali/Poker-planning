@@ -8,6 +8,7 @@ const router = Router();
 
 // All session routes require authentication
 router.post("/", authMiddleware, SessionController.create);
+router.get("/sessions", authMiddleware, SessionController.list);
 router.get("/:sessionId", authMiddleware, SessionController.getOne);
 router.put("/:sessionId", authMiddleware, SessionController.update);
 router.delete("/:sessionId", authMiddleware, SessionController.delete);
