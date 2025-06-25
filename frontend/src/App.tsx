@@ -4,9 +4,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './features/home/HomePage';
 import SessionsPage from './features/sessions/SessionsPage';
 import NewSessionPage from './features/sessions/NewSessionsPage';
-import SessionPage from './features/sessions/SessionsPage';
+import SessionManagementPage from './features/sessions/SessionManagementPage';
 import LoginPage from './features/auth/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import VotingPage from './features/voting/VotingPage';
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
       <Route element={<ProtectedRoute />}>
         <Route path="/sessions" element={<SessionsPage />} />
         <Route path="/sessions/new" element={<NewSessionPage />} />
-        <Route path="/sessions/:sessionId" element={<SessionPage />} />
+        <Route path="/sessions/:sessionId" element={<SessionManagementPage />} />
+        <Route path="/sessions/:sessionId/vote" element={<VotingPage />} />
       </Route>
 
       {/* Fallback */}

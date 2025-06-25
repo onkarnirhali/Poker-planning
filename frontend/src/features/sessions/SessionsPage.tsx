@@ -13,6 +13,9 @@ import {
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useGetSessionsQuery } from '../../api/sessionApi';
+import { useGetStoriesQuery } from '../../api/storiesApi';
+import StoryList from '../stories/StoryList';
+import NewStoryForm from '../stories/NewStoryForm';
 
 export default function SessionsPage() {
   const { data: sessions, error, isLoading } = useGetSessionsQuery();
@@ -44,8 +47,7 @@ export default function SessionsPage() {
                   <Button
                     component={RouterLink}
                     to={`/sessions/${session.id}`}
-                    size="small"
-                  >
+                    size="small">
                     Join
                   </Button>
                 </CardContent>
