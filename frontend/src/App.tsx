@@ -8,12 +8,14 @@ import SessionManagementPage from './features/sessions/SessionManagementPage';
 import LoginPage from './features/auth/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import VotingPage from './features/voting/VotingPage';
+import Layout from './components/Layout';
 
-export default function App() {
+export default function App({ toggleMode }: { toggleMode: () => void }) {
   return (
     <Routes>
       {/* Public */}
       <Route path="/" element={<HomePage />} />
+      <Route element={<Layout toggleMode={toggleMode} />}></Route>
       <Route path="/login" element={<LoginPage />} />
 
       {/* Protected routes */}
