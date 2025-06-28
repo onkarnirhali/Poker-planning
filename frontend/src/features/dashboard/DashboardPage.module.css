@@ -1,0 +1,269 @@
+/* src/features/dashboard/DashboardPage.module.css */
+
+/* Main Container */
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+/* App Bar */
+.appBar {
+  background-color: #ffffff !important;
+  color: #1976d2 !important;
+  border-bottom: 1px solid #e3f2fd;
+  box-shadow: none !important;
+  width: 100%;
+}
+
+.logo {
+  font-weight: 600 !important;
+  color: #1976d2 !important;
+  flex-grow: 1;
+}
+
+.userAvatar {
+  background-color: #1976d2 !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.userName {
+  font-weight: 500 !important;
+  color: #000000 !important;
+}
+
+.userRole {
+  color: #666666 !important;
+}
+
+.logoutButton {
+  color: #1976d2 !important;
+}
+
+/* Main Content - CENTERED */
+.mainContainer {
+  padding: 48px 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: calc(100vh - 64px) !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Welcome Section */
+.welcomeSection {
+  text-align: center;
+  margin-bottom: 48px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.welcomeTitle {
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin-bottom: 16px !important;
+}
+
+.welcomeSubtitle {
+  color: #666666 !important;
+}
+
+/* Cards Container - CENTERED */
+.cardsContainer {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.cardsGrid {
+  max-width: 600px !important;
+}
+
+/* Action Cards - UNIFORM SIZE */
+.actionCard {
+  height: 400px !important; /* Fixed height for uniformity */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid #e3f2fd !important;
+  border-radius: 24px !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.actionCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(25, 118, 210, 0.15) !important;
+  border-color: #1976d2 !important;
+}
+
+.cardContent {
+  padding: 32px !important;
+  text-align: center;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Icon Containers - UNIFORM SIZE */
+.primaryIconContainer {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.3);
+}
+
+.secondaryIconContainer {
+  background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  box-shadow: 0 8px 24px rgba(66, 165, 245, 0.3);
+}
+
+.cardIcon {
+  color: white !important;
+  font-size: 40px !important;
+}
+
+/* Card Content Structure */
+.cardHeader {
+  flex: 0 0 auto;
+}
+
+.cardBody {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardFooter {
+  flex: 0 0 auto;
+  margin-top: 20px;
+}
+
+/* Card Text */
+.cardTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 16px !important;
+}
+
+.cardDescription {
+  color: #666666 !important;
+  margin-bottom: 24px !important;
+}
+
+/* Buttons */
+.primaryButton {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+.primaryButton:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%) !important;
+}
+
+.secondaryButton {
+  background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+.secondaryButton:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+}
+
+/* Stats Section */
+.statsSection {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.statsTitle {
+  margin-bottom: 24px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+}
+
+.statNumber {
+  font-weight: bold !important;
+  color: #1976d2 !important;
+  margin-bottom: 4px !important;
+}
+
+.statLabel {
+  color: #666666 !important;
+  font-size: 0.75rem !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 32px 16px !important;
+  }
+  
+  .welcomeSection {
+    margin-bottom: 32px;
+  }
+  
+  .welcomeTitle {
+    font-size: 2rem !important;
+  }
+  
+  .cardsContainer {
+    margin-bottom: 32px;
+  }
+  
+  .actionCard {
+    height: 350px !important; /* Slightly smaller on mobile */
+  }
+  
+  .cardContent {
+    padding: 24px !important;
+  }
+  
+  .primaryIconContainer,
+  .secondaryIconContainer {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+  }
+  
+  .cardIcon {
+    font-size: 32px !important;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    padding: 10px 20px !important;
+  }
+  
+  .statLabel {
+    font-size: 0.7rem !important;
+  }
+}

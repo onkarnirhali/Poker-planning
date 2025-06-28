@@ -13,3 +13,12 @@ src/
 ├── theme/          # MUI theme (theme.ts)
 ├── utils/          # Helpers (date formatting, types/)
 └── main.tsx        # App entrypoint
+
+
+----------------------------------------------
+
+
+Landing Page                            |- Create Session
+        |                               |- List Sessions
+        |--- Login/Signup -- Dashboard-- 
+        |--- Join Session -- Dialog Box Appears (Enter the Session ID/ Password(if password protected)) -- Voting Room

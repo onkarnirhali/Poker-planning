@@ -1,0 +1,203 @@
+/* src/features/landing/LandingPage.module.css */
+
+/* Main Container */
+.container {
+  min-height: 100vh;
+  background: white;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+/* Hero Section */
+.heroSection {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.heroTitle {
+  font-weight: bold !important;
+  margin-bottom: 16px !important;
+  color: #000000 !important;
+}
+
+.heroSubtitle {
+  margin-bottom: 32px !important;
+  opacity: 0.9;
+  color: #000000 !important;
+}
+
+/* Role Selection */
+.roleSelectionTitle {
+  font-weight: 600 !important;
+  margin-bottom: 32px !important;
+  text-align: center;
+}
+
+/* Role Cards - SAME SIZE AS DASHBOARD */
+.roleCard {
+  height: 400px !important; /* Same as dashboard cards */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid transparent !important;
+  border-radius: 24px !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.roleCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+  border-color: #505051 !important;
+}
+
+.roleCardContent {
+  padding: 32px !important;
+  text-align: center;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Role Card Structure */
+.roleCardHeader {
+  flex: 0 0 auto;
+  margin-bottom: 16px;
+}
+
+.roleCardBody {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.roleCardFooter {
+  flex: 0 0 auto;
+  margin-top: 16px;
+}
+
+/* Role Icons */
+.roleIconContainer {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.3);
+}
+
+.roleIcon {
+  color: white !important;
+  font-size: 40px !important;
+}
+
+/* Role Card Text */
+.roleCardTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 16px !important;
+}
+
+.roleCardDescription {
+  color: #666666 !important;
+  margin-bottom: 24px !important;
+}
+
+/* Role Card Features */
+.roleCardFeatures {
+  margin: 16px 0;
+  text-align: left;
+}
+
+.featureItem {
+  display: block !important;
+  color: #1976d2 !important;
+  margin-bottom: 8px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4;
+}
+
+.featureItem::before {
+  content: "✓";
+  color: #1976d2;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Buttons */
+.facilitatorButton {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  color: white !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
+.facilitatorButton:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%) !important;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3) !important;
+}
+
+.participantButton {
+  background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  color: white !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
+.participantButton:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  box-shadow: 0 4px 12px rgba(66, 165, 245, 0.3) !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem !important;
+  }
+  
+  .roleCard {
+    height: 350px !important; /* Same mobile size as dashboard */
+    margin-bottom: 16px;
+  }
+  
+  .roleCardContent {
+    padding: 24px !important;
+  }
+  
+  .roleIconContainer {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+  }
+  
+  .roleIcon {
+    font-size: 32px !important;
+  }
+  
+  .roleCardFeatures {
+    margin: 12px 0;
+  }
+  
+  .featureItem {
+    margin-bottom: 6px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .facilitatorButton,
+  .participantButton {
+    padding: 10px 20px !important;
+  }
+}

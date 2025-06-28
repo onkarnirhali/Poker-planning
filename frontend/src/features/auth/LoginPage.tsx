@@ -18,7 +18,7 @@ export default function LoginPage() {
       const { user, accessToken } = await login({ email, password }).unwrap();
       dispatch(setCredentials({ user, token: accessToken }));
       localStorage.setItem('token', accessToken);
-      navigate('/sessions');
+      navigate('/dashboard');
     } catch {
       // error state is shown below
     }
