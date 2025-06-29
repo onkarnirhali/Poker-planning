@@ -1,0 +1,305 @@
+/* src/features/sessions/SessionManagementPage.module.css */
+
+/* Main Container */
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 24px 0;
+}
+
+/* Header Section */
+.header {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+  border-radius: 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 2;
+}
+
+.backButton {
+  color: white !important;
+  margin-bottom: 16px !important;
+  opacity: 0.9;
+}
+
+.backButton:hover {
+  opacity: 1;
+}
+
+.sessionTitle {
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+}
+
+.sessionInfo {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.sessionStat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.sessionCode {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.codeLabel {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.codeValue {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Main Content Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Stories Section */
+.storiesSection {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e3f2fd;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e3f2fd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.sectionTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionIcon {
+  color: #1976d2 !important;
+}
+
+.addStoryButton {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+.addStoryButton:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%) !important;
+}
+
+/* Stories List */
+.storiesList {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.storyItem {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.storyItem:hover {
+  background-color: #f8fafc;
+}
+
+.storyItem:last-child {
+  border-bottom: none;
+}
+
+.storyItem.active {
+  background-color: #e3f2fd;
+  border-left: 4px solid #1976d2;
+}
+
+.storyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.storyTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 4px !important;
+}
+
+.storyPoints {
+  background: #1976d2;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.storyDescription {
+  color: #666666 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4;
+}
+
+.emptyStories {
+  padding: 48px 24px;
+  text-align: center;
+  color: #666666;
+}
+
+.emptyIcon {
+  font-size: 64px !important;
+  color: #e0e0e0 !important;
+  margin-bottom: 16px !important;
+}
+
+/* Participants Section */
+.participantsSection {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e3f2fd;
+  height: fit-content;
+}
+
+.participantsList {
+  padding: 16px;
+}
+
+.participantItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.participantAvatar {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.9rem !important;
+}
+
+.participantInfo {
+  flex: 1;
+}
+
+.participantName {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  font-size: 0.9rem !important;
+}
+
+.participantRole {
+  color: #666666 !important;
+  font-size: 0.8rem !important;
+}
+
+.participantStatus {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+}
+
+.emptyParticipants {
+  padding: 24px 16px;
+  text-align: center;
+  color: #666666;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.startVotingButton {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%) !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 12px 32px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  box-shadow: none !important;
+}
+
+.startVotingButton:hover {
+  background: linear-gradient(135deg, #388e3c 0%, #4caf50 100%) !important;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3) !important;
+}
+
+.startVotingButton:disabled {
+  background: #e0e0e0 !important;
+  color: #999999 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .sessionInfo {
+    gap: 12px;
+  }
+  
+  .sessionStat {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .startVotingButton {
+    width: 100%;
+  }
+}
