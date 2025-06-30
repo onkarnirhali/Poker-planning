@@ -1,4 +1,4 @@
-// src/features/sessions/CreateSessionPage.tsx
+// src/features/sessions/CreateSessionPage.tsx - FIXED VERSION
 import React, { useState } from 'react';
 import {
   Box,
@@ -81,7 +81,11 @@ export default function CreateSessionPage() {
   // UI state
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [sessionCreated, setSessionCreated] = useState(false);
-  const [sessionCode, setSessionCode] = useState('');
+  const [sessionData, setSessionData] = useState<{
+    sessionId: string;
+    joinCode: string;
+    sessionName: string;
+  } | null>(null);
   const [codeCopied, setCodeCopied] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   
@@ -136,12 +140,27 @@ export default function CreateSessionPage() {
         password: formData.password || undefined,
       }).unwrap();
 
-      // Generate session code (first 6 chars of session ID)
-      const code = result.session?.id?.split('-')[0]?.toUpperCase().slice(0, 6) || 'ABC123';
-      setSessionCode(code);
+      // FIXED: Use the actual API response
+      console.log('API Response:', result); // Debug log
+      
+      const sessionId = result.session?.id;
+      const joinCode = result.joinCode;
+      
+      if (!sessionId || !joinCode) {
+        throw new Error('Invalid session response from server');
+      }
+
+      // Store session data for display
+      setSessionData({
+        sessionId: sessionId,           // Full UUID for navigation
+        joinCode: joinCode,             // 6-char code for sharing
+        sessionName: formData.name,
+      });
+      
       setSessionCreated(true);
       
     } catch (error: any) {
+      console.error('Create session error:', error);
       setErrors({ 
         submit: error.data?.message || 'Failed to create session. Please try again.' 
       });
@@ -149,8 +168,10 @@ export default function CreateSessionPage() {
   };
 
   const copySessionCode = async () => {
+    if (!sessionData) return;
+    
     try {
-      await navigator.clipboard.writeText(sessionCode);
+      await navigator.clipboard.writeText(sessionData.joinCode);
       setCodeCopied(true);
       setTimeout(() => setCodeCopied(false), 2000);
     } catch (err) {
@@ -159,11 +180,14 @@ export default function CreateSessionPage() {
   };
 
   const handleManageSession = () => {
-    // Navigate to session management page
-    navigate(`/sessions/${sessionCode}`);
+    if (!sessionData) return;
+    
+    // FIXED: Navigate using the full session ID, not the join code
+    console.log('Navigating to session:', sessionData.sessionId);
+    navigate(`/sessions/${sessionData.sessionId}`);
   };
 
-  if (sessionCreated) {
+  if (sessionCreated && sessionData) {
     return (
       <Box className={styles.container}>
         <Container maxWidth="md">
@@ -173,16 +197,16 @@ export default function CreateSessionPage() {
             </Typography>
             
             <Typography variant="body1" className={styles.successText}>
-              Your planning poker session "{formData.name}" is ready. Share this code with your team:
+              Your planning poker session "{sessionData.sessionName}" is ready. Share this code with your team:
             </Typography>
 
             <Box className={styles.sessionCode}>
               <Typography variant="body2" className={styles.codeLabel}>
-                Session Code
+                Session Code (Share with team)
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
                 <Typography variant="h3" className={styles.codeValue}>
-                  {sessionCode}
+                  {sessionData.joinCode}
                 </Typography>
                 <IconButton onClick={copySessionCode} sx={{ color: '#1976d2' }}>
                   {codeCopied ? <Check /> : <ContentCopy />}
@@ -193,6 +217,7 @@ export default function CreateSessionPage() {
                   Copied to clipboard!
                 </Typography>
               )}
+              
             </Box>
 
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>

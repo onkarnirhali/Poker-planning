@@ -1,0 +1,315 @@
+/* frontend/src/features/sessions/EditSessionDialog.module.css */
+
+/* Dialog Overlay */
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+  padding: 16px;
+}
+
+/* Main Dialog Container */
+.dialog {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dialog Header */
+.dialogHeader {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+  color: white;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dialogTitle {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dialogSubtitle {
+  opacity: 0.9;
+  font-size: 0.9rem !important;
+}
+
+/* Dialog Content */
+.dialogContent {
+  padding: 32px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Form Sections */
+.formSection {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 16px !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem !important;
+}
+
+.sectionIcon {
+  color: #1976d2 !important;
+  font-size: 1.2rem !important;
+}
+
+/* Form Fields - SAME AS CreateSessionPage */
+.formField {
+  margin-bottom: 20px !important;
+}
+
+.textField {
+  width: 100%;
+}
+
+.textField .MuiOutlinedInput-root {
+  border-radius: 8px !important;
+}
+
+.textField .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #1976d2 !important;
+}
+
+.textField .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #1976d2 !important;
+}
+
+.textField .MuiInputLabel-root.Mui-focused {
+  color: #1976d2 !important;
+}
+
+/* Deck Type Selection - Simplified for Dialog */
+.deckTypeContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.deckTypeCard {
+  border: 2px solid #e3f2fd !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  padding: 12px !important;
+  text-align: left;
+  background: white !important;
+}
+
+.deckTypeCard:hover {
+  border-color: #1976d2 !important;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15) !important;
+}
+
+.deckTypeCard.selected {
+  border-color: #1976d2 !important;
+  background-color: #e3f2fd !important;
+}
+
+.deckTypeCard.disabled {
+  border-color: #e0e0e0 !important;
+  background-color: #f5f5f5 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
+
+.deckTypeTitle {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 4px !important;
+  font-size: 0.9rem !important;
+}
+
+.deckTypeDescription {
+  color: #666666 !important;
+  font-size: 0.8rem !important;
+}
+
+.deckTypeValues {
+  color: #1976d2 !important;
+  font-size: 0.75rem !important;
+  margin-top: 4px !important;
+  font-weight: 500 !important;
+}
+
+.comingSoonBadge {
+  background-color: #ff9800 !important;
+  color: white !important;
+  font-size: 0.7rem !important;
+  padding: 2px 6px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  float: right;
+}
+
+/* Advanced Settings Toggle */
+.advancedToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  color: #1976d2 !important;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.advancedToggle:hover {
+  background-color: #f8fafc;
+}
+
+.advancedContent {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e3f2fd;
+}
+
+/* Form Actions */
+.dialogActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 20px 32px 32px 32px;
+  border-top: 1px solid #e3f2fd;
+  background-color: #fafafa;
+}
+
+.cancelButton {
+  background-color: #ffffff !important;
+  color: #666666 !important;
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  min-width: 100px !important;
+}
+
+.cancelButton:hover {
+  background-color: #f5f5f5 !important;
+  border-color: #cccccc !important;
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  min-width: 120px !important;
+}
+
+.saveButton:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%) !important;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3) !important;
+}
+
+.saveButton:disabled {
+  background: #e0e0e0 !important;
+  color: #999999 !important;
+}
+
+/* Error Alert */
+.errorAlert {
+  margin-bottom: 20px !important;
+  border-radius: 8px !important;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dialogOverlay {
+    padding: 0;
+    align-items: stretch;
+  }
+  
+  .dialog {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dialogContent {
+    flex: 1;
+    padding: 24px 20px;
+    max-height: none;
+  }
+  
+  .dialogActions {
+    padding: 16px 20px;
+    flex-direction: column;
+  }
+  
+  .cancelButton,
+  .saveButton {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  
+  .formField {
+    margin-bottom: 16px !important;
+  }
+}
