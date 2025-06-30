@@ -1,4 +1,4 @@
-// frontend/src/features/sessions/SessionsPage.tsx - IMPROVED WITH SEPARATE BUTTONS
+// frontend/src/features/sessions/SessionsPage.tsx - FIXED: Removed Duplicate Function
 import React, { useState, useMemo } from 'react';
 import {
   Container,
@@ -37,6 +37,7 @@ import {
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useGetSessionsQuery } from '../../api/sessionApi';
 import EditSessionDialog from './EditSessionDialog';
+import DeleteSessionDialog from './DeleteSessionDialog';
 import type { Session } from '../../types';
 import styles from './SessionsPage.module.css';
 
@@ -73,6 +74,10 @@ export default function SessionsPage() {
   // Edit Dialog State
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [sessionToEdit, setSessionToEdit] = useState<Session | null>(null);
+  
+  // Delete Dialog State
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [sessionToDelete, setSessionToDelete] = useState<Session | null>(null);
   
   // Notification State
   const [notification, setNotification] = useState<{
@@ -125,6 +130,25 @@ export default function SessionsPage() {
     setSessionToEdit(null);
   };
 
+  // Delete Dialog Handlers
+  const handleDeleteSession = (session: Session) => {
+    setSessionToDelete(session);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteDialogClose = () => {
+    setDeleteDialogOpen(false);
+    setSessionToDelete(null);
+  };
+
+  const handleDeleteSuccess = () => {
+    setNotification({
+      open: true,
+      message: `Session "${sessionToDelete?.name}" has been deleted successfully.`,
+      severity: 'success'
+    });
+  };
+
   const handleCopySessionCode = async (sessionId: string) => {
     const code = sessionId.split('-')[0].toUpperCase().slice(0, 6);
     try {
@@ -141,16 +165,6 @@ export default function SessionsPage() {
         severity: 'error'
       });
     }
-  };
-
-  const handleDeleteSession = (session: Session) => {
-    // TODO: Implement delete confirmation dialog in next phase
-    console.log('Delete session:', session.id);
-    setNotification({
-      open: true,
-      message: `Delete functionality for "${session.name}" coming soon!`,
-      severity: 'info'
-    });
   };
 
   const getStatusChip = (status: string) => {
@@ -198,7 +212,7 @@ export default function SessionsPage() {
       },
       {
         key: 'copy',
-        label: variant === 'mobile' ? 'Copy Code' : 'Copy Code',
+        label: variant === 'mobile' ? 'Copy Code' : 'Copy',
         icon: <ContentCopy fontSize="small" />,
         onClick: () => handleCopySessionCode(session.id),
         className: styles.btnCopy,
@@ -483,6 +497,16 @@ export default function SessionsPage() {
           open={editDialogOpen}
           onClose={handleEditDialogClose}
           session={sessionToEdit}
+        />
+      )}
+
+      {/* Delete Session Dialog */}
+      {sessionToDelete && (
+        <DeleteSessionDialog
+          open={deleteDialogOpen}
+          onClose={handleDeleteDialogClose}
+          session={sessionToDelete}
+          onSuccess={handleDeleteSuccess}
         />
       )}
 
