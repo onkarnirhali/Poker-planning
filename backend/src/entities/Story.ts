@@ -1,5 +1,4 @@
-
-// src/entities/Story.ts
+// backend/src/entities/Story.ts - UPDATED VERSION
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -36,6 +35,14 @@ export class Story {
 
   @Column({ default: false })
   isClosed!: boolean;
+
+  // NEW: Final score set by facilitator after voting
+  @Column({ nullable: true })
+  finalScore?: string;
+
+  // NEW: Average of all votes for this story
+  @Column({ type: "decimal", precision: 3, scale: 1, nullable: true })
+  averageVote?: number;
 
   @ManyToOne(() => Session)
   @JoinColumn({ name: "session_id" })

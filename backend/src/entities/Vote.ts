@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { Story } from "./Story";
 import { User } from "./User";
+import { VotingSession } from "./VotingSession";
 
 @Entity({ name: "votes" })
 export class Vote {
@@ -37,4 +38,14 @@ export class Vote {
 
   @CreateDateColumn({ type: "timestamptz" })
   createdAt!: Date;
+
+  @Column("uuid", { nullable: true })
+  votingSessionId?: string;
+
+  @Column({ type: "timestamptz", default: () => "CURRENT_TIMESTAMP" })
+  submittedAt!: Date;
+
+  @ManyToOne(() => VotingSession, votingSession => votingSession.votes, { nullable: true })
+  @JoinColumn({ name: "votingSessionId" })
+  votingSession?: VotingSession;
 }

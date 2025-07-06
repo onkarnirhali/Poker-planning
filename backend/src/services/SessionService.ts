@@ -50,8 +50,6 @@ export class SessionService {
     let data = await this.sessionRepository.find({
     order: { createdAt: "DESC" },
     });
-    console.log("Fetched all sessions:", data);
-    return data;
  }
   async getSession(sessionId: string) {
     const session = await this.sessionRepository.findOne({ where: { id: sessionId } });

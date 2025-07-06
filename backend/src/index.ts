@@ -11,6 +11,7 @@ import { registerVotingHandlers } from "./sockets/voting";
 import authRoutes from "./routes/auth";
 import sessionRoutes from "./routes/session";
 import storyRoutes from "./routes/story";
+import analyticsRoutes from "./routes/analytics";
 
 
 dotenv.config();
